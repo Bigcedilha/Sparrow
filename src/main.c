@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "interpreter.h"
 
 int main(int argc, char **argv){
   if (argc < 1){
@@ -10,8 +11,12 @@ int main(int argc, char **argv){
 
   FILE *fptr = fopen(argv[1], "w");
   if (fptr == NULL){
-    perror("Could not open the file, please try again later.\n")
+    perror("Could not open the file, please try again later.\n");
+    return -1;
   }
 
+  interpreter();
 
+  fclose();
+  return 0;
 }
